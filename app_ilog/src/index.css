@@ -1,13 +1,317 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+  background: #f5f5f5;
+  background-image: linear-gradient(to bottom, #f5f5f5, #aaa8a8);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.stock-manager {
+  position: relative;
+  margin-top: 20px;
+  max-width: 500px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 30px;
+  border: 1px solid #5e5b5b;
+  border-radius: 2px;
+  background-color: #c0c0c0;
 }
+
+.contact-form {
+  position:relative;
+  max-width: 300px;
+  margin-top:20px;
+  margin-bottom:50px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 20px;
+  padding-right: 30px;
+  padding-bottom: 30px;
+  border: 1px solid #5e5b5b;
+  border-radius: 2px;
+  background-color: #c0c0c0;
+}
+
+.texte-souligne {
+  text-decoration: underline;
+}
+
+.contact-form h2 {
+  margin-bottom: 10px;
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.contact-form input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.contact-form button {
+  margin-top: 7px;
+  padding: 10px 15px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #32af58;
+}
+
+.contact-form .checkbox-container {
+  display: inline-flex;
+  align-items: center;
+}
+
+.contact-form label {
+  margin-left: 10px;
+}
+
+.stock-manager h2 {
+  margin-bottom: 10px;
+}
+
+.stock-manager label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.stock-manager input {
+  width: 100%;
+  padding: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.stock-manager button {
+  margin-top: 7px;
+  padding: 10px 15px;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #32af58;
+}
+
+.stock-list {
+  list-style: none;
+  padding-left: 0px;
+  padding-right: 5px;
+}
+
+.stock-list li {
+  margin-bottom: 5px;
+  padding: 10px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.stock-item-name {
+  font-weight: bold;
+}
+
+.stock-manager .stock-list li div button {
+  margin-right: 5px;
+  font-size: 12px;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #428bca;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #32af58;
+}
+
+.stock-list li div button.delete-button {
+  background-color: rgb(212, 36, 36);
+}
+
+.stock-list li div button.update-button {
+  background-color: rgb(115, 115, 238);
+}
+
+.content {
+  margin-top: 20px;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+p {
+  margin-bottom: 10px;
+}
+
+ul {
+  list-style-type: disc;
+  margin-left: 20px;
+  margin-bottom: 20px;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #aaa8a8;
+  padding: 10px;
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button-container button {
+  margin: 5px;
+  margin-bottom: 30px;
+}
+
+.table-container {
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  text-align: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.table-container {
+  position: relative;
+  margin-top: 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 30px;
+  border: 1px solid #5e5b5b;
+  border-radius: 5px;
+  background-color: #c0c0c0;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+table {
+  text-align: center;
+  border-collapse: collapse;
+}
+
+table tr {
+  border-bottom: 1px solid black;
+}
+
+table th,
+table td {
+  padding: 8px;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+.header {
+  background-color: #a1a1a1;
+  margin-bottom: 20px;
+  padding-top: 5px;
+  padding-bottom: 0.1px;
+  width: 100%;
+}
+
+.subject-container {
+  position: relative;
+  margin-top: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 30px;
+  border: 1px solid #5e5b5b;
+  border-radius: 2px;
+  background-color: #c0c0c0;
+  padding-bottom: 15px;
+}
+
+.success-message {
+  margin-top: 10px;
+  color: green;
+}
+
+.error-message-contact-form {
+  color: red;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.highlighted {
+  background-color: yellow;
+}
+
+.custom-button.search-button {
+  background-color: rgb(62, 62, 197);
+  color: white;
+  padding: 8px 16px; /* Espacement intérieur du bouton */
+  margin-right: 8px; /* Espacement entre les boutons */
+  font-size: 14px; /* Taille de la police */
+  width: 120px; /* Largeur du bouton */
+  margin-bottom: 15px;
+  margin-left: 15px;
+}
+
+.custom-button.close-button {
+  background-color: rgb(230, 50, 50);
+  color: white;
+  padding: 8px 16px; /* Espacement intérieur du bouton */
+  font-size: 14px; /* Taille de la police */
+  width: 60px; /* Largeur du bouton */
+  margin-bottom: 15px;
+  margin-left: 5px;
+}
+
+
