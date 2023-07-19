@@ -4,19 +4,20 @@ import '@testing-library/jest-dom/extend-expect';
 
 import StockManager from './StockManager';
 
+// Render the StockManager component before each test to access its elements
 const { getByLabelText, getByTestId, queryByText } = render(<StockManager />);
 
+// Test that the 'StockManager' component successfully adds a stock item
 test('adds stock item', () => {
-
-  // Remplir les champs
+  // Fill in the input fields
   fireEvent.change(getByLabelText('Name:'), { target: { value: 'Item 1' } });
   fireEvent.change(getByLabelText('Description:'), { target: { value: 'Description 1' } });
   fireEvent.change(getByLabelText('Quantity:'), { target: { value: '10' } });
 
-  // Cliquer sur le bouton d'ajout
+  // Click the 'add-button'
   fireEvent.click(getByTestId('add-button'));
 
-  // Vérifier que l'article a été ajouté à la liste de stocks
+  // Check that the stock item has been added to the stock list
   const stockList = getByTestId('stock-list');
   const stockItem = queryByText((content, element) => {
     const hasText = node => node.textContent === 'Item 1' || node.textContent === 'Description 1' || node.textContent === 'Quantity: 10';
@@ -26,24 +27,25 @@ test('adds stock item', () => {
   });
   expect(stockItem).toBeVisible();
 
-  // Vérifier que les champs sont réinitialisés après l'ajout
+  // Check that the input fields are reset after adding the item
   expect(getByLabelText('Name:')).toHaveValue('');
   expect(getByLabelText('Description:')).toHaveValue('');
   expect(getByLabelText('Quantity:')).toHaveDisplayValue('0');
 
-  // Vérifie que le bouton Delete supprime l'article de la liste de stocks
+  // Check that the 'Delete' button removes the stock item from the stock list
   const deleteButton = screen.getByText('Delete');
   fireEvent.click(deleteButton);
   expect(queryByText(/Item 1 - Description 1 - Quantity: 10/i)).toBeNull();
 });
 
+// Test that an error message is displayed when fields are not filled or quantity is 0
 test('displays error message when fields are not filled or quantity is 0', () => {
   const { getByTestId, queryByText } = render(<StockManager />);
 
-  // Cliquer sur le bouton d'ajout sans remplir les champs
+  // Click the 'add-button' without filling the fields
   fireEvent.click(getByTestId('add-button'));
 
-  // Vérifier que le message d'erreur est affiché
+  // Check that the error message is displayed
   const errorMessage = queryByText((content, element) => {
     return content === 'Please fill in all fields and ensure quantity is greater than 0.';
   });
@@ -51,6 +53,7 @@ test('displays error message when fields are not filled or quantity is 0', () =>
   expect(errorMessage).toBeInTheDocument();
 });
 
+// Test that the contact form inputs are rendered
 test('renders contact form inputs', () => {
   const { getByLabelText } = render(<StockManager />);
 
@@ -65,6 +68,7 @@ test('renders contact form inputs', () => {
   expect(messageTextarea).toBeInTheDocument();
 });
 
+// Test that no error messages are displayed when required fields are filled
 test('does not display error messages when required fields are filled', () => {
   const { queryByText, getByLabelText, getByRole } = render(<StockManager />);
 
@@ -95,6 +99,7 @@ test('does not display error messages when required fields are filled', () => {
   expect(messageTextarea).not.toHaveClass('error');
 });
 
+// Test that a success message is displayed after sending a message
 test('displays success message after sending a message', () => {
   const { getByLabelText, getByRole, getByText } = render(<StockManager />);
 

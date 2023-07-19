@@ -1,3 +1,4 @@
+/* Global styles for the body */
 body {
   font-family: Helvetica, Arial, sans-serif;
   min-height: 100vh;
@@ -5,6 +6,7 @@ body {
   background-image: linear-gradient(to bottom, #f5f5f5, #aaa8a8);
 }
 
+/* Styles for the stock manager section */
 .stock-manager {
   position: relative;
   margin-top: 20px;
@@ -17,11 +19,12 @@ body {
   background-color: #c0c0c0;
 }
 
+/* Styles for the contact form section */
 .contact-form {
-  position:relative;
+  position: relative;
   max-width: 300px;
-  margin-top:20px;
-  margin-bottom:50px;
+  margin-top: 20px;
+  margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
   padding-left: 20px;
@@ -32,19 +35,23 @@ body {
   background-color: #c0c0c0;
 }
 
+/* Underline text style */
 .texte-souligne {
   text-decoration: underline;
 }
 
+/* Styles for the contact form heading */
 .contact-form h2 {
   margin-bottom: 10px;
 }
 
+/* Styles for form labels in the contact form section */
 .contact-form label {
   display: block;
   margin-bottom: 5px;
 }
 
+/* Styles for form inputs in the contact form section */
 .contact-form input {
   width: 100%;
   padding: 5px;
@@ -53,6 +60,7 @@ body {
   border-radius: 4px;
 }
 
+/* Styles for buttons in the contact form section */
 .contact-form button {
   margin-top: 7px;
   padding: 10px 15px;
@@ -63,24 +71,29 @@ body {
   background-color: #32af58;
 }
 
+/* Styles for the checkbox container in the contact form section */
 .contact-form .checkbox-container {
   display: inline-flex;
   align-items: center;
 }
 
+/* Styles for labels in the checkbox container */
 .contact-form label {
   margin-left: 10px;
 }
 
+/* Styles for heading in the stock manager section */
 .stock-manager h2 {
   margin-bottom: 10px;
 }
 
+/* Styles for form labels in the stock manager section */
 .stock-manager label {
   display: block;
   margin-bottom: 5px;
 }
 
+/* Styles for form inputs in the stock manager section */
 .stock-manager input {
   width: 100%;
   padding: 5px;
@@ -89,6 +102,7 @@ body {
   border-radius: 4px;
 }
 
+/* Styles for buttons in the stock manager section */
 .stock-manager button {
   margin-top: 7px;
   padding: 10px 15px;
@@ -99,12 +113,14 @@ body {
   background-color: #32af58;
 }
 
+/* Styles for the stock list */
 .stock-list {
   list-style: none;
   padding-left: 0px;
   padding-right: 5px;
 }
 
+/* Styles for items in the stock list */
 .stock-list li {
   margin-bottom: 5px;
   padding: 10px;
@@ -113,15 +129,18 @@ body {
   background-color: #f9f9f9;
 }
 
+/* Styles for the stock item name */
 .stock-item-name {
   font-weight: bold;
 }
 
+/* Styles for buttons in the stock list items */
 .stock-manager .stock-list li div button {
   margin-right: 5px;
   font-size: 12px;
 }
 
+/* Styles for the h1 element */
 h1 {
   text-align: center;
   margin-top: 10px;
@@ -129,6 +148,7 @@ h1 {
   margin-bottom: 20px;
 }
 
+/* Styles for the page container */
 .page {
   max-width: 800px;
   margin: 0 auto;
@@ -136,6 +156,7 @@ h1 {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
+/* Styles for buttons in general */
 button {
   padding: 10px 20px;
   background-color: #428bca;
@@ -146,41 +167,50 @@ button {
   cursor: pointer;
 }
 
+/* Hover styles for buttons */
 button:hover {
   background-color: #32af58;
 }
 
+/* Styles for the delete button in the stock list items */
 .stock-list li div button.delete-button {
   background-color: rgb(212, 36, 36);
 }
 
+/* Styles for the update button in the stock list items */
 .stock-list li div button.update-button {
   background-color: rgb(115, 115, 238);
 }
 
+/* Styles for the content section */
 .content {
   margin-top: 20px;
 }
 
+/* Styles for the h2 element */
 h2 {
   font-size: 20px;
   margin-bottom: 10px;
 }
 
+/* Styles for paragraphs */
 p {
   margin-bottom: 10px;
 }
 
+/* Styles for unordered lists */
 ul {
   list-style-type: disc;
   margin-left: 20px;
   margin-bottom: 20px;
 }
 
+/* Styles for list items */
 li {
   margin-bottom: 5px;
 }
 
+/* Styles for the footer section */
 footer {
   position: fixed;
   left: 0;
@@ -191,31 +221,37 @@ footer {
   text-align: center;
 }
 
+/* Styles for the button container */
 .button-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Styles for buttons in the button container */
 .button-container button {
   margin: 5px;
   margin-bottom: 30px;
 }
 
+/* Styles for the table container */
 .table-container {
   display: flex;
   justify-content: center;
 }
 
+/* Styles for the container */
 .container {
   text-align: center;
 }
 
+/* Styles for the button container (duplicate declaration) */
 .button-container {
   display: flex;
   justify-content: center;
 }
 
+/* Styles for the table container */
 .table-container {
   position: relative;
   margin-top: 20px;
@@ -230,26 +266,31 @@ footer {
   padding-bottom: 30px;
 }
 
+/* Styles for the table */
 table {
   text-align: center;
   border-collapse: collapse;
 }
 
+/* Styles for table rows */
 table tr {
   border-bottom: 1px solid black;
 }
 
+/* Styles for table headers and cells */
 table th,
 table td {
   padding: 8px;
 }
 
+/* Styles for error messages */
 .error-message {
   color: red;
   font-size: 14px;
   margin-top: 20px;
 }
 
+/* Styles for the header section */
 .header {
   background-color: #a1a1a1;
   margin-bottom: 20px;
@@ -258,6 +299,7 @@ table td {
   width: 100%;
 }
 
+/* Styles for the subject container */
 .subject-container {
   position: relative;
   margin-top: 20px;
@@ -271,17 +313,20 @@ table td {
   padding-bottom: 15px;
 }
 
+/* Styles for success messages */
 .success-message {
   margin-top: 10px;
   color: green;
 }
 
+/* Styles for error messages in the contact form */
 .error-message-contact-form {
   color: red;
   font-size: 14px;
   margin-bottom: 10px;
 }
 
+/* Styles for the search bar */
 .search-bar {
   display: flex;
   justify-content: center;
@@ -289,29 +334,30 @@ table td {
   margin-bottom: 20px;
 }
 
+/* Styles for highlighted elements in the stock list */
 .highlighted {
   background-color: yellow;
 }
 
+/* Custom styles for the search button */
 .custom-button.search-button {
   background-color: rgb(62, 62, 197);
   color: white;
-  padding: 8px 16px; /* Espacement intérieur du bouton */
-  margin-right: 8px; /* Espacement entre les boutons */
-  font-size: 14px; /* Taille de la police */
-  width: 120px; /* Largeur du bouton */
+  padding: 8px 16px; /* Button padding */
+  margin-right: 8px; /* Space between buttons */
+  font-size: 14px; /* Font size */
+  width: 120px; /* Button width */
   margin-bottom: 15px;
   margin-left: 15px;
 }
 
+/* Custom styles for the close button */
 .custom-button.close-button {
   background-color: rgb(230, 50, 50);
   color: white;
-  padding: 8px 16px; /* Espacement intérieur du bouton */
-  font-size: 14px; /* Taille de la police */
-  width: 60px; /* Largeur du bouton */
+  padding: 8px 16px; /* Button padding */
+  font-size: 14px; /* Font size */
+  width: 60px; /* Button width */
   margin-bottom: 15px;
   margin-left: 5px;
 }
-
-

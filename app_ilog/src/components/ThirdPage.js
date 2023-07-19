@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const ThirdPage = ({ handlePageChange }) => {
-  // État pour stocker les valeurs sélectionnées
+  // State to store the selected values
   const [selectedValues, setSelectedValues] = useState({
     architecture: 0,
     evolutivity: 0,
@@ -11,7 +11,7 @@ const ThirdPage = ({ handlePageChange }) => {
     presentationQuality: 0,
   });
 
-  // État pour stocker l'état des cases à cocher
+  // State to store the checkbox states
   const [checkboxStates, setCheckboxStates] = useState({
     architecture: false,
     evolutivity: false,
@@ -21,7 +21,7 @@ const ThirdPage = ({ handlePageChange }) => {
     presentationQuality: false,
   });
 
-  // Fonction de gestion du changement de sélection
+  // Function to handle the change of selection
   const handleSelectChange = (fieldName, value) => {
     setSelectedValues((prevValues) => ({
       ...prevValues,
@@ -29,7 +29,7 @@ const ThirdPage = ({ handlePageChange }) => {
     }));
   };
 
-  // Fonction de gestion du changement des cases à cocher
+  // Function to handle the change of checkboxes
   const handleCheckboxChange = (fieldName) => {
     setCheckboxStates((prevStates) => ({
       ...prevStates,
@@ -37,22 +37,22 @@ const ThirdPage = ({ handlePageChange }) => {
     }));
   };
 
-  // Calcul de la note finale en additionnant toutes les valeurs sélectionnées
+  // Calculate the final score by summing all selected values
   const finalNote = Object.values(selectedValues).reduce((sum, value) => sum + value, 0);
 
   return (
     <div style={{ textAlign: 'center' }}>
-    <header className="header">
-      <h1>Scoring grid</h1>
+      <header className="header">
+        <h1>Scoring grid</h1>
       </header>
       <nav>
-      <div className="button-container">
-        <button onClick={() => handlePageChange('first')}>Stock</button>
-        <button onClick={() => handlePageChange('second')}>Subject</button>
+        <div className="button-container">
+          <button onClick={() => handlePageChange('first')}>Stock</button>
+          <button onClick={() => handlePageChange('second')}>Subject</button>
         </div>
       </nav>
       <div className="table-container" style={{ display: 'flex', justifyContent: 'center' }}>
-        <table style={{ textAlign: 'center' }}>
+      <table style={{ textAlign: 'center' }}>
           <thead>
             <tr>
               <th>Eléments de notation</th>

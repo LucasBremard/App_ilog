@@ -5,28 +5,31 @@ import '@testing-library/jest-dom/extend-expect';
 import ThirdPage from './ThirdPage';
 
 test('renders ThirdPage component', () => {
+  // Mock the handlePageChange function using Jest's mock function
   const handlePageChange = jest.fn();
+
+  // Render the ThirdPage component with the mocked handlePageChange function
   render(<ThirdPage handlePageChange={handlePageChange} />);
 
-  // Vérifie si le titre est rendu correctement
+  // Check if the title is rendered correctly
   expect(screen.getByRole('heading', { name: /Scoring grid/i })).toBeInTheDocument();
 
-  // Vérifie si les boutons sont rendus
+  // Check if the buttons are rendered
   expect(screen.getByRole('button', { name: 'Stock' })).toBeInTheDocument();
   expect(screen.getByRole('button', { name: 'Subject' })).toBeInTheDocument();
 
-  // Vérifie si le tableau est rendu
+  // Check if the table is rendered
   const table = screen.getByRole('table');
   expect(table).toBeInTheDocument();
 
-  // Vérifie si les lignes et les cellules du tableau sont rendues correctement
+  // Check if the rows and cells of the table are rendered correctly
   const tableRows = screen.getAllByRole('row');
-  expect(tableRows.length).toBe(8); // Y compris l'en-tête du tableau
+  expect(tableRows.length).toBe(8); // Including the table header
 
   const tableCells = screen.getAllByRole('cell');
-  expect(tableCells.length).toBe(21); // 3 colonnes * 7 lignes
+  expect(tableCells.length).toBe(21); // 3 columns * 7 rows
 
-  // Simule les clics sur les boutons et vérifie si la fonction handlePageChange est appelée correctement
+  // Simulate clicks on the buttons and check if the handlePageChange function is called correctly
   userEvent.click(screen.getByRole('button', { name: 'Stock' }));
   expect(handlePageChange).toHaveBeenCalledWith('first');
 

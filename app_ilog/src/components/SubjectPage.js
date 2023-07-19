@@ -1,10 +1,12 @@
 import React from 'react';
 
 const SubjectPage = ({ handlePageChange }) => {
+  // Construct the file path for the document to be downloaded
   const currentURL = window.location.href;
   const baseURL = currentURL.substring(0, currentURL.lastIndexOf('/') + 1);
   const filePath = `${baseURL}../file/2023 - Rattrapage Projet Ingénierie du logiciel ETUDIANT.docx`;
 
+  // Function to handle the download of the document
   const handleDownload = () => {
     fetch(filePath)
       .then(response => response.blob())
@@ -22,7 +24,7 @@ const SubjectPage = ({ handlePageChange }) => {
         URL.revokeObjectURL(downloadURL);
       })
       .catch(error => {
-        console.error('Une erreur s\'est produite lors du téléchargement du fichier :', error);
+        console.error('An error occurred while downloading the file:', error);
       });
   };
   

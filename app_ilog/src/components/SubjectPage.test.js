@@ -7,20 +7,20 @@ describe('SubjectPage', () => {
   it('renders page content correctly', () => {
     render(<SubjectPage />);
 
-    // Vérifie que le titre de la page est affiché correctement
+    // Verify that the page title is displayed correctly
     const pageTitle = screen.getByText('Exam subject');
     expect(pageTitle).toBeInTheDocument();
 
-    // Vérifie qu'il y a un bouton pour aller à la première page
+    // Verify that there is a button to navigate to the first page
     const goToFirstPageButton = screen.getByText('Stock');
     expect(goToFirstPageButton).toBeInTheDocument();
 
-    // Vérifie qu'il y a du contenu texte spécifique à la page
+    // Verify that there is specific page content
     const expectedText = /Il n’y a pas de projet cadrant/;
     const pageContent = screen.queryByText((content, element) => {
       return element.tagName.toLowerCase() === 'p' && content.match(expectedText);
     });
     expect(pageContent).toBeInTheDocument();
 
-    });
   });
+});

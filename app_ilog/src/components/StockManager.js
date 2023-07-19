@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 const StockManager = () => {
+  // State variables for managing form inputs, stock items, error messages, and contact form data
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [quantity, setQuantity] = useState(0);
@@ -20,6 +21,7 @@ const StockManager = () => {
   const [contactMessageError, setContactMessageError] = useState('');
   const [showSearchBar, setShowSearchBar] = useState(false);
 
+  // Event handlers for updating state variables based on form inputs and actions
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
@@ -37,17 +39,20 @@ const StockManager = () => {
   };
 
   const handleAddStock = () => {
+    // Check if any of the required fields are empty or quantity is zero
     if (name.trim() === '' || description.trim() === '' || quantity === 0) {
       setErrorMessage('Please fill in all fields and ensure quantity is greater than 0.');
       return;
     }
 
+    // Create a new stock item object with the input values
     const newStockItem = {
       name: name,
       description: description,
       quantity: quantity
     };
 
+    // Update the stock items list based on whether it's an addition or update operation
     if (updateIndex === -1) {
       setStockItems([...stockItems, newStockItem]);
     } else {
@@ -57,6 +62,7 @@ const StockManager = () => {
       setUpdateIndex(-1);
     }
 
+    // Reset form inputs and error message
     setName('');
     setDescription('');
     setQuantity(0);
@@ -64,16 +70,19 @@ const StockManager = () => {
   };
 
   const handleDeleteStock = (index) => {
+    // Remove the stock item from the list
     const updatedStockItems = [...stockItems];
     updatedStockItems.splice(index, 1);
     setStockItems(updatedStockItems);
 
+    // Reset the updateIndex if the item being deleted is currently being updated
     if (index === updateIndex) {
       setUpdateIndex(-1);
     }
   };
 
   const handleUpdateStock = (index) => {
+    // Set the form inputs to the values of the item being updated
     const itemToUpdate = stockItems[index];
     setName(itemToUpdate.name);
     setDescription(itemToUpdate.description);
@@ -102,6 +111,7 @@ const StockManager = () => {
   };
 
   const handleSendMessage = () => {
+    // Validate the contact form fields before sending the message
     if (contactName.trim() === '') {
       setContactNameError('Please enter your name.');
       return;
@@ -122,6 +132,7 @@ const StockManager = () => {
       return;
     }
 
+    // Show success message after sending the message
     setShowMessage(true);
   };
 
@@ -130,12 +141,14 @@ const StockManager = () => {
   };
 
   const handleSearchButtonClick = () => {
+    // Filter stock items based on the search term
     const results = stockItems.filter((item) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setSearchResults(results);
   };
 
+  // JSX for rendering the component's UI
   return (
     <div>
       <div className="stock-manager">
