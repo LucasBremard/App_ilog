@@ -1,43 +1,89 @@
 import React, { useState } from 'react';
 
+/**
+ * Component for managing stock items and contact form.
+ * @returns {JSX.Element} The rendered component.
+ */
 const StockManager = () => {
   // State variables for managing form inputs, stock items, error messages, and contact form data
+  /** @type {string} */
   const [name, setName] = useState('');
+  /** @type {string} */
   const [description, setDescription] = useState('');
+  /** @type {number} */
   const [quantity, setQuantity] = useState(0);
+  /** @type {object[]} */
   const [stockItems, setStockItems] = useState([]);
+  /** @type {string} */
   const [errorMessage, setErrorMessage] = useState('');
+  /** @type {number} */
   const [updateIndex, setUpdateIndex] = useState(-1);
+  /** @type {boolean} */
   const [showMessage, setShowMessage] = useState(false);
+  /** @type {string} */
   const [searchTerm, setSearchTerm] = useState('');
+  /** @type {object[]} */
   const [searchResults, setSearchResults] = useState([]);
+  /** @type {string} */
   const [contactName, setContactName] = useState('');
+  /** @type {string} */
   const [contactNameError, setContactNameError] = useState('');
+  /** @type {string} */
   const [contactFirstName, setContactFirstName] = useState('');
+  /** @type {string} */
   const [contactFirstNameError, setContactFirstNameError] = useState('');
+  /** @type {string} */
   const [contactEmail, setContactEmail] = useState('');
+  /** @type {string} */
   const [contactEmailError, setContactEmailError] = useState('');
+  /** @type {string} */
   const [contactMessage, setContactMessage] = useState('');
+  /** @type {string} */
   const [contactMessageError, setContactMessageError] = useState('');
+  /** @type {boolean} */
   const [showSearchBar, setShowSearchBar] = useState(false);
 
   // Event handlers for updating state variables based on form inputs and actions
+
+  /**
+   * Handle the change of the stock item name.
+   * @param {object} e - The form change event.
+   * @returns {void}
+   */
   const handleNameChange = (e) => {
     setName(e.target.value);
   };
 
+  /**
+   * Handle the change of the stock item description.
+   * @param {object} e - The form change event.
+   * @returns {void}
+   */
   const handleDescriptionChange = (e) => {
     setDescription(e.target.value);
   };
 
+  /**
+   * Handle the change of the stock item quantity.
+   * @param {object} e - The form change event.
+   * @returns {void}
+   */
   const handleQuantityChange = (e) => {
     setQuantity(parseInt(e.target.value));
   };
 
+  /**
+   * Handle toggling the search bar visibility.
+   * @returns {void}
+   */
   const handleToggleSearchBar = () => {
     setShowSearchBar(!showSearchBar);
   };
 
+  /**
+   * Handle adding a new stock item or updating an existing one.
+   * @returns {void}
+   */
   const handleAddStock = () => {
     // Check if any of the required fields are empty or quantity is zero
     if (name.trim() === '' || description.trim() === '' || quantity === 0) {
@@ -69,6 +115,11 @@ const StockManager = () => {
     setErrorMessage('');
   };
 
+  /**
+   * Handle deleting a stock item.
+   * @param {number} index - The index of the stock item to delete.
+   * @returns {void}
+   */
   const handleDeleteStock = (index) => {
     // Remove the stock item from the list
     const updatedStockItems = [...stockItems];
@@ -81,6 +132,11 @@ const StockManager = () => {
     }
   };
 
+  /**
+   * Handle updating a stock item.
+   * @param {number} index - The index of the stock item to update.
+   * @returns {void}
+   */
   const handleUpdateStock = (index) => {
     // Set the form inputs to the values of the item being updated
     const itemToUpdate = stockItems[index];
@@ -90,26 +146,50 @@ const StockManager = () => {
     setUpdateIndex(index);
   };
 
+  /**
+   * Handle the change of the contact's last name.
+   * @param {object} e - The form change event.
+   * @returns {void}
+   */
   const handleContactNameChange = (e) => {
     setContactName(e.target.value);
     setContactNameError('');
   };
 
+  /**
+   * Handle the change of the contact's first name.
+   * @param {object} e - The form change event.
+   * @returns {void}
+   */
   const handleContactFirstNameChange = (e) => {
     setContactFirstName(e.target.value);
     setContactFirstNameError('');
   };
 
+  /**
+   * Handle the change of the contact's email.
+   * @param {object} e - The form change event.
+   * @returns {void}
+   */
   const handleContactEmailChange = (e) => {
     setContactEmail(e.target.value);
     setContactEmailError('');
   };
 
+  /**
+   * Handle the change of the contact's message.
+   * @param {object} e - The form change event.
+   * @returns {void}
+   */
   const handleContactMessageChange = (e) => {
     setContactMessage(e.target.value);
     setContactMessageError('');
   };
 
+  /**
+   * Handle sending the contact form message.
+   * @returns {void}
+   */
   const handleSendMessage = () => {
     // Validate the contact form fields before sending the message
     if (contactName.trim() === '') {
@@ -136,10 +216,19 @@ const StockManager = () => {
     setShowMessage(true);
   };
 
+  /**
+   * Handle the change of the search input.
+   * @param {object} e - The form change event.
+   * @returns {void}
+   */
   const handleSearchInputChange = (e) => {
     setSearchTerm(e.target.value);
   };
 
+  /**
+   * Handle clicking the search button.
+   * @returns {void}
+   */
   const handleSearchButtonClick = () => {
     // Filter stock items based on the search term
     const results = stockItems.filter((item) =>
@@ -147,7 +236,6 @@ const StockManager = () => {
     );
     setSearchResults(results);
   };
-
   // JSX for rendering the component's UI
   return (
     <div>

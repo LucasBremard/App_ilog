@@ -1,7 +1,16 @@
 import React, { useState } from 'react';
 
+/**
+ * Functional component representing the third page of the scoring grid.
+ * @param {Object} props - The props object.
+ * @param {Function} props.handlePageChange - Function to handle page change.
+ * @returns {JSX.Element} The JSX element representing the third page of the scoring grid.
+ */
 const ThirdPage = ({ handlePageChange }) => {
-  // State to store the selected values
+  /**
+   * State to store the selected values for each category.
+   * @type {Object}
+   */
   const [selectedValues, setSelectedValues] = useState({
     architecture: 0,
     evolutivity: 0,
@@ -11,7 +20,10 @@ const ThirdPage = ({ handlePageChange }) => {
     presentationQuality: 0,
   });
 
-  // State to store the checkbox states
+  /**
+   * State to store the checkbox states for each category.
+   * @type {Object}
+   */
   const [checkboxStates, setCheckboxStates] = useState({
     architecture: false,
     evolutivity: false,
@@ -21,7 +33,11 @@ const ThirdPage = ({ handlePageChange }) => {
     presentationQuality: false,
   });
 
-  // Function to handle the change of selection
+  /**
+   * Function to handle the change of selection for a specific category.
+   * @param {string} fieldName - The name of the category (e.g., 'architecture').
+   * @param {string} value - The selected value for the category.
+   */
   const handleSelectChange = (fieldName, value) => {
     setSelectedValues((prevValues) => ({
       ...prevValues,
@@ -29,7 +45,10 @@ const ThirdPage = ({ handlePageChange }) => {
     }));
   };
 
-  // Function to handle the change of checkboxes
+  /**
+   * Function to handle the change of checkboxes for a specific category.
+   * @param {string} fieldName - The name of the category (e.g., 'architecture').
+   */
   const handleCheckboxChange = (fieldName) => {
     setCheckboxStates((prevStates) => ({
       ...prevStates,
@@ -37,7 +56,10 @@ const ThirdPage = ({ handlePageChange }) => {
     }));
   };
 
-  // Calculate the final score by summing all selected values
+  /**
+   * Calculate the final score by summing all selected values.
+   * @type {number}
+   */
   const finalNote = Object.values(selectedValues).reduce((sum, value) => sum + value, 0);
 
   return (

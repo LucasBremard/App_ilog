@@ -1,12 +1,22 @@
 import React from 'react';
 
+/**
+ * Functional component representing the SubjectPage.
+ * @param {Object} props - The props passed to the SubjectPage component.
+ * @param {Function} props.handlePageChange - Function to handle page change.
+ * @returns {JSX.Element} - The JSX element representing the SubjectPage.
+ */
 const SubjectPage = ({ handlePageChange }) => {
   // Construct the file path for the document to be downloaded
   const currentURL = window.location.href;
   const baseURL = currentURL.substring(0, currentURL.lastIndexOf('/') + 1);
   const filePath = `${baseURL}../file/2023 - Rattrapage Projet Ingénierie du logiciel ETUDIANT.docx`;
 
-  // Function to handle the download of the document
+  /**
+   * Function to handle the download of the document.
+   * Fetches the document file and initiates the download.
+   * @returns {void}
+   */
   const handleDownload = () => {
     fetch(filePath)
       .then(response => response.blob())
