@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ThirdPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ThirdPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState } from 'react';
+
+/**
+ * Functional component representing the third page of the scoring grid.
+ * @param {Object} props - The props object.
+ * @param {Function} props.handlePageChange - Function to handle page change.
+ * @returns {JSX.Element} The JSX element representing the third page of the scoring grid.
+ */
+const ThirdPage = ({ handlePageChange }) => {
+  /**
+   * State to store the selected values for each category.
+   * @type {Object}
+   */
+  const [selectedValues, setSelectedValues] = useState({
+    architecture: 0,
+    evolutivity: 0,
+    unitTests: 0,
+    programmingTechniques: 0,
+    projectRelevance: 0,
+    presentationQuality: 0,
+  });
+
+  /**
+   * State to store the checkbox states for each category.
+   * @type {Object}
+   */
+  const [checkboxStates, setCheckboxStates] = useState({
+    architecture: false,
+    evolutivity: false,
+    unitTests: false,
+    programmingTechniques: false,
+    projectRelevance: false,
+    presentationQuality: false,
+  });
+
+  /**
+   * Function to handle the change of selection for a specific category.
+   * @param {string} fieldName - The name of the category (e.g., 'architecture').
+   * @param {string} value - The selected value for the category.
+   */
+  const handleSelectChange = (fieldName, value) => {
+    setSelectedValues((prevValues) => ({
+      ...prevValues,
+      [fieldName]: parseInt(value, 10),
+    }));
+  };
+
+  /**
+   * Function to handle the change of checkboxes for a specific category.
+   * @param {string} fieldName - The name of the category (e.g., 'architecture').
+   */
+  const handleCheckboxChange = (fieldName) => {
+    setCheckboxStates((prevStates) => ({
+      ...prevStates,
+      [fieldName]: !prevStates[fieldName],
+    }));
+  };
+
+  /**
+   * Calculate the final score by summing all selected values.
+   * @type {number}
+   */
+  const finalNote = Object.values(selectedValues).reduce((sum, value) => sum + value, 0);
+
+  return (
+    &lt;div style={{ textAlign: 'center' }}>
+      &lt;header className="header">
+        &lt;h1>Scoring grid&lt;/h1>
+      &lt;/header>
+      &lt;nav>
+        &lt;div className="button-container">
+          &lt;button onClick={() => handlePageChange('first')}>Stock&lt;/button>
+          &lt;button onClick={() => handlePageChange('second')}>Subject&lt;/button>
+        &lt;/div>
+      &lt;/nav>
+      &lt;div className="table-container" style={{ display: 'flex', justifyContent: 'center' }}>
+      &lt;table style={{ textAlign: 'center' }}>
+          &lt;thead>
+            &lt;tr>
+              &lt;th>Eléments de notation&lt;/th>
+              &lt;th>Note&lt;/th>
+              &lt;th>Validé&lt;/th>
+            &lt;/tr>
+          &lt;/thead>
+          &lt;tbody>
+            &lt;tr>
+              &lt;td>Architecture logicielle et Design Pattern (4 points)&lt;/td>
+              &lt;td>
+                &lt;select
+                  value={selectedValues.architecture}
+                  onChange={(e) => handleSelectChange('architecture', e.target.value)}
+                  disabled={checkboxStates.architecture}
+                >
+                  {Array.from({ length: 5 }, (_, index) => (
+                    &lt;option key={index} value={index}>
+                      {index}
+                    &lt;/option>
+                  ))}
+                &lt;/select>
+              &lt;/td>
+              &lt;td>
+                &lt;input
+                  type="checkbox"
+                  checked={checkboxStates.architecture}
+                  onChange={() => handleCheckboxChange('architecture')}
+                />
+              &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td>Evolutivité du logiciel (git) (3 points)&lt;/td>
+              &lt;td>
+                &lt;select
+                  value={selectedValues.evolutivity}
+                  onChange={(e) => handleSelectChange('evolutivity', e.target.value)}
+                  disabled={checkboxStates.evolutivity}
+                >
+                  {Array.from({ length: 4 }, (_, index) => (
+                    &lt;option key={index} value={index}>
+                      {index}
+                    &lt;/option>
+                  ))}
+                &lt;/select>
+              &lt;/td>
+              &lt;td>
+                &lt;input
+                  type="checkbox"
+                  checked={checkboxStates.evolutivity}
+                  onChange={() => handleCheckboxChange('evolutivity')}
+                />
+              &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td>Tests unitaires (3 points)&lt;/td>
+              &lt;td>
+                &lt;select
+                  value={selectedValues.unitTests}
+                  onChange={(e) => handleSelectChange('unitTests', e.target.value)}
+                  disabled={checkboxStates.unitTests}
+                >
+                  {Array.from({ length: 4 }, (_, index) => (
+                    &lt;option key={index} value={index}>
+                      {index}
+                    &lt;/option>
+                  ))}
+                &lt;/select>
+              &lt;/td>
+              &lt;td>
+                &lt;input
+                  type="checkbox"
+                  checked={checkboxStates.unitTests}
+                  onChange={() => handleCheckboxChange('unitTests')}
+                />
+              &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td>Mise en place de techniques de programmation avancée (4 points)&lt;/td>
+              &lt;td>
+                &lt;select
+                  value={selectedValues.programmingTechniques}
+                  onChange={(e) => handleSelectChange('programmingTechniques', e.target.value)}
+                  disabled={checkboxStates.programmingTechniques}
+                >
+                  {Array.from({ length: 5 }, (_, index) => (
+                    &lt;option key={index} value={index}>
+                      {index}
+                    &lt;/option>
+                  ))}
+                &lt;/select>
+              &lt;/td>
+              &lt;td>
+                &lt;input
+                  type="checkbox"
+                  checked={checkboxStates.programmingTechniques}
+                  onChange={() => handleCheckboxChange('programmingTechniques')}
+                />
+              &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td>Pertinence du projet choisi (2 points)&lt;/td>
+              &lt;td>
+                &lt;select
+                  value={selectedValues.projectRelevance}
+                  onChange={(e) => handleSelectChange('projectRelevance', e.target.value)}
+                  disabled={checkboxStates.projectRelevance}
+                >
+                  {Array.from({ length: 3 }, (_, index) => (
+                    &lt;option key={index} value={index}>
+                      {index}
+                    &lt;/option>
+                  ))}
+                &lt;/select>
+              &lt;/td>
+              &lt;td>
+                &lt;input
+                  type="checkbox"
+                  checked={checkboxStates.projectRelevance}
+                  onChange={() => handleCheckboxChange('projectRelevance')}
+                />
+              &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td>Qualité de la présentation et démonstration (4 points)&lt;/td>
+              &lt;td>
+                &lt;select
+                  value={selectedValues.presentationQuality}
+                  onChange={(e) => handleSelectChange('presentationQuality', e.target.value)}
+                  disabled={checkboxStates.presentationQuality}
+                >
+                  {Array.from({ length: 5 }, (_, index) => (
+                    &lt;option key={index} value={index}>
+                      {index}
+                    &lt;/option>
+                  ))}
+                &lt;/select>
+              &lt;/td>
+              &lt;td>
+                &lt;input
+                  type="checkbox"
+                  checked={checkboxStates.presentationQuality}
+                  onChange={() => handleCheckboxChange('presentationQuality')}
+                />
+              &lt;/td>
+            &lt;/tr>
+            &lt;tr>
+              &lt;td>Note finale&lt;/td>
+              &lt;td>
+                &lt;select value={finalNote} disabled>
+                  {Array.from({ length: 21 }, (_, index) => (
+                    &lt;option key={index} value={index}>
+                      {index}
+                    &lt;/option>
+                  ))}
+                &lt;/select>
+              &lt;/td>
+              &lt;td>/ 20&lt;/td>
+            &lt;/tr>
+          &lt;/tbody>
+        &lt;/table>
+      &lt;/div>
+    &lt;/div>
+  );
+};
+
+export default ThirdPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#StockManager">StockManager</a></li><li><a href="global.html#SubjectPage">SubjectPage</a></li><li><a href="global.html#ThirdPage">ThirdPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 20 2023 18:12:54 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

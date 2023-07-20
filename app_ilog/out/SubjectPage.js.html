@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: SubjectPage.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: SubjectPage.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React from 'react';
+
+/**
+ * Functional component representing the SubjectPage.
+ * @param {Object} props - The props passed to the SubjectPage component.
+ * @param {Function} props.handlePageChange - Function to handle page change.
+ * @returns {JSX.Element} - The JSX element representing the SubjectPage.
+ */
+const SubjectPage = ({ handlePageChange }) => {
+  // Construct the file path for the document to be downloaded
+  const currentURL = window.location.href;
+  const baseURL = currentURL.substring(0, currentURL.lastIndexOf('/') + 1);
+  const filePath = `${baseURL}../file/2023 - Rattrapage Projet Ingénierie du logiciel ETUDIANT.docx`;
+
+  /**
+   * Function to handle the download of the document.
+   * Fetches the document file and initiates the download.
+   * @returns {void}
+   */
+  const handleDownload = () => {
+    fetch(filePath)
+      .then(response => response.blob())
+      .then(blob => {
+        const downloadURL = URL.createObjectURL(blob);
+
+        const link = document.createElement('a');
+        link.href = downloadURL;
+        link.download = 'Sujet ILOG - Rattrapage.docx';
+
+        document.body.appendChild(link);
+        link.click();
+
+        document.body.removeChild(link);
+        URL.revokeObjectURL(downloadURL);
+      })
+      .catch(error => {
+        console.error('An error occurred while downloading the file:', error);
+      });
+  };
+  
+  return (
+    &lt;div>
+      &lt;header className="header">
+        &lt;h1>Exam subject&lt;/h1>
+      &lt;/header>
+      &lt;nav>
+        &lt;div className="button-container">
+          &lt;button onClick={() => handlePageChange('first')}>Stock&lt;/button>
+          &lt;button onClick={() => handlePageChange('third')}>Grid&lt;/button>
+        &lt;/div>
+      &lt;/nav>
+      &lt;div className="subject-container">
+        &lt;h2>Projet individuel&lt;/h2>
+        &lt;p>
+          Il n’y a pas de projet cadrant, le but de ce rattrapage sera de laisser la latitude nécessaire à l’étudiant afin de démontrer ses compétences en ingénierie logicielle. Dans ce cadre, l’étudiant doit construire son propre projet avec le projet de son choix permettant de montrer les compétences avec quelques contraintes. Le projet doit être réalisé en langage JAVA avec l’IDE de votre choix, un dépôt git devra être exploité dans le cadre de ce projet.
+        &lt;/p>
+        &lt;p>
+          Eléments attendus dans ce projet :
+        &lt;/p>
+        &lt;ul>
+          &lt;li>Programmation en JAVA avec l’IDE de votre choix&lt;/li>
+          &lt;li>Gestion des versions avec git&lt;/li>
+          &lt;li>Modularité&lt;/li>
+          &lt;li>Automatisation&lt;/li>
+          &lt;li>Tests unitaires&lt;/li>
+          &lt;li>Génération de documentation automatique&lt;/li>
+          &lt;li>Architecture logicielle propre&lt;/li>
+          &lt;li>Mise en place de quelques design pattern pertinents&lt;/li>
+          &lt;li>Exploitation de threads&lt;/li>
+          &lt;li>Mise en place d’une programmation fonctionnelle&lt;/li>
+          &lt;li>Résumé des bonnes pratiques de programmation adoptées&lt;/li>
+        &lt;/ul>
+        &lt;p>
+          Eléments évaluables :
+        &lt;/p>
+        &lt;ul>
+          &lt;li>Présentation orale de 15 minutes incluant une démonstration de la solution proposée ;&lt;/li>
+          &lt;li>Document synthétique d’environ 15 à 20 pages expliquant le projet choisi et comment sa construction témoigne des éléments attendus, l’architecture de la solution, le déploiement des éléments attendus.&lt;/li>
+        &lt;/ul>
+        &lt;p>
+          Modalités de passage : remise document la veille de l’oral, date de l’oral à convenir avec l’étudiant
+        &lt;/p>
+        &lt;button onClick={handleDownload}>Download&lt;/button>
+      &lt;/div>
+    &lt;/div>
+  );
+};
+
+export default SubjectPage;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#StockManager">StockManager</a></li><li><a href="global.html#SubjectPage">SubjectPage</a></li><li><a href="global.html#ThirdPage">ThirdPage</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.2</a> on Thu Jul 20 2023 18:12:54 GMT+0200 (heure d’été d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
