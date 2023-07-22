@@ -289,7 +289,6 @@ const StockManager = () => {
                   Search
                 </button>
                 <button className="close-button custom-button" onClick={handleToggleSearchBar}>
-                  <span>×</span>
                 </button>
 
               </>
