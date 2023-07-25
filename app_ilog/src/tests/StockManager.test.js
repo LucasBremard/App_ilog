@@ -2,7 +2,7 @@ import React from 'react';
 import { render, fireEvent, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import StockManager from './StockManager';
+import StockManager from '../components/StockManager';
 
 // Render the StockManager component before each test to access its elements
 const { getByLabelText, getByTestId, queryByText } = render(<StockManager />);
