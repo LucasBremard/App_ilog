@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom/extend-expect';
 
-import SubjectPage from './SubjectPage';
+import SubjectPage from '../components/SubjectPage';
 
 describe('SubjectPage', () => {
   it('renders page content correctly', () => {
